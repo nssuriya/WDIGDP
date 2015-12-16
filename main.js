@@ -82,12 +82,13 @@ rl.on('line', function(line) {
         obj["Country"]=currentLine[0];
         obj["Value"]=parseFloat(currentLine[49]);
         gdppercapita2005.push(obj);
-      }
 
+        //aggregate
         for(i=4;i<currentLine.length;i++)
-            if(!isNaN(parseFloat(currentLine[i])) && continents[currentLine[0]] != undefined)
+            if(!isNaN(parseFloat(currentLine[i])))
             aggregate[continents[currentLine[0]]][i-4]=aggregate[continents[currentLine[0]]][i-4]+parseFloat(currentLine[i]);
 
+      }
   }
   else if(currentLine[2]== "GNI per capita (constant 2005 US$)"){
     if(continents[currentLine[0]] != undefined)
