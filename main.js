@@ -84,37 +84,9 @@ rl.on('line', function(line) {
         gdppercapita2005.push(obj);
       }
 
-    if(continents[currentLine[0]]==="ASIA"){
         for(i=4;i<currentLine.length;i++)
-        if(!isNaN(parseFloat(currentLine[i])))
-        aggregate.ASIA[i-4]=aggregate.ASIA[i-4]+parseFloat(currentLine[i]);
-      }
-
-    else if(continents[currentLine[0]]==="AFRICA"){
-      for(i=4;i<currentLine.length;i++)
-      if(!isNaN(parseFloat(currentLine[i])))
-      aggregate.AFRICA[i-4]=aggregate.AFRICA[i-4]+parseFloat(currentLine[i]);
-      }
-    else if(continents[currentLine[0]]==="EUROPE"){
-      for(i=4;i<currentLine.length;i++)
-      if(!isNaN(parseFloat(currentLine[i])))
-      aggregate.EUROPE[i-4]=aggregate.EUROPE[i-4]+parseFloat(currentLine[i]);
-    }
-    else if(continents[currentLine[0]]==="N_AMERICA"){
-      for(i=4;i<currentLine.length;i++)
-      if(!isNaN(parseFloat(currentLine[i])))
-      aggregate.N_AMERICA[i-4]=aggregate.N_AMERICA[i-4]+parseFloat(currentLine[i]);
-    }
-    else if(continents[currentLine[0]]==="S_AMERICA"){
-      for(i=4;i<currentLine.length;i++)
-      if(!isNaN(parseFloat(currentLine[i])))
-      aggregate.S_AMERICA[i-4]=aggregate.S_AMERICA[i-4]+parseFloat(currentLine[i]);
-    }
-    else if(continents[currentLine[0]]==="OCEANIA"){
-      for(i=4;i<currentLine.length;i++)
-      if(!isNaN(parseFloat(currentLine[i])))
-      aggregate.OCEANIA[i-4]=aggregate.OCEANIA[i-4]+parseFloat(currentLine[i]);
-    }
+            if(!isNaN(parseFloat(currentLine[i])) && continents[currentLine[0]] != undefined)
+            aggregate[continents[currentLine[0]]][i-4]=aggregate[continents[currentLine[0]]][i-4]+parseFloat(currentLine[i]);
 
   }
   else if(currentLine[2]== "GNI per capita (constant 2005 US$)"){
@@ -127,7 +99,7 @@ rl.on('line', function(line) {
     for(i=4;i<currentLine.length;i++){
       var obj = new Object;
       obj["Year"]=heading[i];
-      obj["Value"]=currentLine[i];
+      obj["Value"]=parseFloat(currentLine[i]);
       gdpindia.push(obj);
     }
 

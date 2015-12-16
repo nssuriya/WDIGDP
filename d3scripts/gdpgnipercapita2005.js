@@ -1,4 +1,4 @@
-function formatGdpValue(d) {return d/1000000000000;}
+function formatGdpValue(d) {return d/1000;}
 var margin = {top: 20, right: 20, bottom: 30, left: 150},
     width = 1300 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -56,7 +56,7 @@ d3.json("../json/gdpgnipc2005.json", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Income of country (In trillion dollars)");
+      .text("Income of country (in thousand dollars)");
 
   var state = svg.selectAll(".state")
       .data(data)
